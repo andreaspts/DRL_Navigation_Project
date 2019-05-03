@@ -15,10 +15,10 @@ Due to the fact that we are using state vectors as an input and not image data w
 We speficy the parameters used in the Deep Q-Learning algorithm (as in the dqn-function of the Navigation_solution.ipynb notebook):
 
 - We set the number of episodes n_episodes to 3000. The number of episodes needed to solve the environment and reach a score of 13.0 is expected to be smaller.
-- We set the maximum steps per episode max_t to 1000. 
+- We set the maximum number of steps per episode max_t to 1000. Notice that the maximum number steps is actually hardcoded to 299 in the environment. 
 - We start with an epsilion eps_start of 1.0.
 - We end with an epsilion eps_end of 0.01.
-- We set the epsilion decay rate eps_decay to 0.999.
+- We set the epsilion decay rate eps_decay to 0.995.
 
 Furthermore we give the parameters used in the dqn_agent.py file:
 
