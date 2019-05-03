@@ -6,7 +6,7 @@ For an introduction to reinforcement learning and deep reinforcement learning in
 ### Introduction
 
 <p align="center">
-  <img width="460" height="300" src="https://user-images.githubusercontent.com/10624937/42135619-d90f2f28-7d12-11e8-8823-82b970a54d7e.gif">
+  <img width="460" height="300" src="banana world.gif">
 </p>
 
 In this project we train an agent to explore a world and to collect yellow and blue bananas. More precisely, the agent receives a reward of +1 for collecting a yellow banana and is punished for collecting a blue banana. Hence, the overall aim of the agent is to amass as many yellow bananas as possible while refraining from collecting blue ones. The problem is defined as an episodic task and the environment is considered to be solved when an anverage score of +13 over 100 consecutive episodes is attained.
