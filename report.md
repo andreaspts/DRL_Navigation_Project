@@ -2,7 +2,7 @@
 
 ## Learning algorithm
 
-The employed learning algorithm is the standard Deep Q-Learning algorithm which was introduced in the article [Human-level control through deep reinforcementlearning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). 
+The employed learning algorithm is the standard Deep Q-Learning algorithm which was introduced in the article [Human-level control through deep reinforcement learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). 
 
 Due to the fact that we are using state vectors as an input and not image data we use a simple deep neural network instead of a convolutional neural network to determine the action-value function. The former consists of the following 5 layers coded into the model.py file:
 
@@ -76,5 +76,6 @@ A bunch of improvements on the bare Deep Q-Learning have been suggested in the l
 2. Double DQNs: This method is also known as double Learning and was introduced in the article [Double Q-learning](https://papers.nips.cc/paper/3964-double-q-learning). Using this method, overestimation of Q-values can be tackled.
 3. Prioritized Experience Replay (PER): This method was introduced in the article [Prioritized Experience Replay](https://arxiv.org/abs/1511.05952). This work is motivated by the idea to give priority to experiences which could be more important for completing the task.
 4. Dueling Deep Q Networks (DDQNs): Dueling DQNs were introduced in the article [Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581). The architecture proposed in this work allows to decompose Q(s,a) into a sum of the state-value function V(s) and the advantage A(s,a) which quantifies the improvement of taking a particular action compared to all other ones at the given state. By calculating V(s), the agent learns about the value of a state without having to learn about the impact of each available action at that state. This is useful when the effect of available actions of states onto the environment is not too important.
-5. RAINBOW Paper
-6. Learning from pixels
+5.  More extensions can be included, such as Learning from multi-step bootstrap targets, Distributional DQN and Noisy DQN. The combined impact of these six extensions was analyzed in the article [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298).
+
+6. An additional challenge would be to learn from pixels. In such a project the state is given by an 84 x 84 RGB image and the neural network correponds to one of convolutional type. Training should be done using a GPU which is optimized to process image data.
