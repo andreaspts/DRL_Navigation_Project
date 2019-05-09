@@ -67,15 +67,25 @@ Episode 2374	Average Score: 13.06
 Environment solved in 2274 episodes!	Average Score: 13.06
 ```
 
-## Possible future extensions of the setting
+## Possible extensions of the setting and future work
 
 1. The hyperparameters should be optimized: For example, we could change the epsilon decay rate, the learning rate, the batch size and improve the network structure (more/less layers and units; overfitting could be tackled using dropout).
 
-A bunch of improvements on the bare Deep Q-Learning have been suggested in the literature:
 
-2. Double DQNs: This method is also known as double Learning and was introduced in the article [Double Q-learning](https://papers.nips.cc/paper/3964-double-q-learning). Using this method, overestimation of Q-values can be tackled.
-3. Prioritized Experience Replay (PER): This method was introduced in the article [Prioritized Experience Replay](https://arxiv.org/abs/1511.05952). This work is motivated by the idea to give priority to experiences which could be more important for completing the task.
-4. Dueling Deep Q Networks (DDQNs): Dueling DQNs were introduced in the article [Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581). The architecture proposed in this work allows to decompose Q(s,a) into a sum of the state-value function V(s) and the advantage A(s,a) which quantifies the improvement of taking a particular action compared to all other ones at the given state. By calculating V(s), the agent learns about the value of a state without having to learn about the impact of each available action at that state. This is useful when the effect of available actions of states onto the environment is not too important.
-5.  More extensions can be included, such as Learning from multi-step bootstrap targets, Distributional DQN and Noisy DQN. The combined impact of these six extensions was analyzed in the article [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298).
+Further improvements of the Deep Q-Learning algorithm have been introduced in distinct papers
 
-6. An additional challenge would be to learn from pixels. In such a project the state is given by an 84 x 84 RGB image and the neural network correponds to one of convolutional type. Training should be done using a GPU which is optimized to process image data.
+
+2. [Prioritized Experience Replay](https://arxiv.org/abs/1511.05952): In this work the authors extend the idea of experience replay. They introduce a method which prioritizes experiences by replaying important transitions more often which accelerates the learning rate. 
+
+
+3. [Double Q-learning](https://papers.nips.cc/paper/3964-double-q-learning): This method deals with the problem of overestimation, resulting from a positive bias that is introduced because Q-learning uses the maximum action value as an approximation for the maximum expected action value. In this work the authors introduce a double estimator method and show that this method performs well in cases were Q-learning tends to overestimation.
+
+
+
+4. [Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581): In this paper, the authors present a neural network architecture with two branches leading to two estimators: one for the state value function _V(s)_ and one for the state-dependent action advantage function _A(s,a)_. This quantifies the improvement of taking one action compared to the rest. Calculating the value function independently allows the agent to learn the value of the state without the effect of choosing one action over the others. This becomes advantageous for environments were the effect of a single actions on states is not too extensive.
+
+5. [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298): In this paper the authors discuss a combination of multiple possible improvements, such as Learning from multi-step bootstrap targets, Distributional DQN and Noisy DQN. It is shown that in many cases the combination of these methods leads to remarkable improvement in the performance. 
+
+Image based Q-learning
+
+6. It is also possible to learn from pixels were the state of the system would be given by an 84 x 84 RGB image. This approach would require a convolutional deep Q-Network and an adequate  training should be performed on GPUs.
