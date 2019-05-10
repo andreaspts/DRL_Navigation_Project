@@ -45,31 +45,14 @@ Therein, we applied a simple and exponential moving average function at window s
 Then we list the average score every 100 episodes up to the point where the agent reaches a score equal or higher than 13.0: 
 
 ```
-Episode 100	Average Score: 0.16
-Episode 200	Average Score: 0.56
-Episode 300	Average Score: 1.67
-Episode 400	Average Score: 2.33
-Episode 500	Average Score: 3.13
-Episode 600	Average Score: 4.27
-Episode 700	Average Score: 5.53
-Episode 800	Average Score: 6.19
-Episode 900	Average Score: 6.95
-Episode 1000	Average Score: 7.73
-Episode 1100	Average Score: 7.24
-Episode 1200	Average Score: 8.52
-Episode 1300	Average Score: 8.92
-Episode 1400	Average Score: 10.42
-Episode 1500	Average Score: 10.52
-Episode 1600	Average Score: 10.62
-Episode 1700	Average Score: 11.35
-Episode 1800	Average Score: 11.57
-Episode 1900	Average Score: 11.44
-Episode 2000	Average Score: 11.97
-Episode 2100	Average Score: 12.41
-Episode 2200	Average Score: 12.42
-Episode 2300	Average Score: 12.40
-Episode 2374	Average Score: 13.06
-Environment solved in 2274 episodes!	Average Score: 13.06
+Episode 100	Average Score: 0.599	steps: 299	epsilon: 0.6057704364907278
+Episode 200	Average Score: 4.266	steps: 299	epsilon: 0.36695782172616715
+Episode 300	Average Score: 7.377	steps: 299	epsilon: 0.22229219984074702
+Episode 400	Average Score: 9.333	steps: 299	epsilon: 0.13465804292601349
+Episode 500	Average Score: 10.811	steps: 299	epsilon: 0.08157186144027828
+Episode: 561	Average Score: 13.02	steps: 299	epsilon: 0.060082541949528794
+With the given parameters the environment is solved in 561 episodes. 	
+The precise average score is 13.02 there.
 ```
 
 In the Training run 2, we used the epsilion decay rate 0.95 and followed an over greedier policy. We also set the theta parameter for the soft update to a slightly bigger value in the dqn_agent.py file.
