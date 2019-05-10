@@ -42,8 +42,6 @@ First we give a plot of the scores over the episodes:
 Therein, we applied a simple and exponential moving average function at window sizes of 5  (green plot and yellow plot, respectively) overlaying the original data (blue). The red line indicates the threshold 13.0. More information on how to construct these moving averages in python can be found under the following links:
 [Moving average in python](https://www.quora.com/How-do-I-perform-moving-average-in-Python) and [Exponential Moving average in python](https://www.youtube.com/watch?v=3y9GESSZmS0). Notice that the exponential moving average gives more emphasis to recent data than the simple version of it. In general, [moving averages](https://en.wikipedia.org/wiki/Moving_average) are a method to smoothen time and data series.
 
-Anwendung findet der gleitende Mittelwert beispielsweise bei der Analyse von Zeitreihen.
-
 Then we list the average score every 100 episodes up to the point where the agent reaches a score equal or higher than 13.0: 
 
 ```
@@ -57,7 +55,7 @@ With the given parameters the environment is solved in 561 episodes.
 The precise average score is 13.02 there.
 ```
 
-In Training run 2, we used the epsilion decay rate 0.95 and followed an over greedier policy. We also set the theta parameter for the soft update to a slightly bigger value in the dqn_agent.py file.
+In Training run 2, we used the epsilion decay rate 0.95 and followed an overall greedier policy. We also set the theta parameter for the soft update to a slightly bigger value in the dqn_agent.py file.
 
 The respective results are plotted and printed below. The environment is solved much faster following the greedier policy and following a harder update.
 
