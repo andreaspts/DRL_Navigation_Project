@@ -40,7 +40,9 @@ First we give a plot of the scores over the episodes:
 </p>
 
 Therein, we applied a simple and exponential moving average function at window sizes of 5  (green plot and yellow plot, respectively) overlaying the original data (blue). The red line indicates the threshold 13.0. More information on how to construct these moving averages in python can be found under the following links:
-[Moving average in python](https://www.quora.com/How-do-I-perform-moving-average-in-Python) and [Exponential Moving average in python](https://www.youtube.com/watch?v=3y9GESSZmS0). Notice that the exponential moving average gives more emphasis to recent data than the simple version of it.
+[Moving average in python](https://www.quora.com/How-do-I-perform-moving-average-in-Python) and [Exponential Moving average in python](https://www.youtube.com/watch?v=3y9GESSZmS0). Notice that the exponential moving average gives more emphasis to recent data than the simple version of it. In general, [moving averages](https://en.wikipedia.org/wiki/Moving_average) are a method to smoothen time and data series.
+
+Anwendung findet der gleitende Mittelwert beispielsweise bei der Analyse von Zeitreihen.
 
 Then we list the average score every 100 episodes up to the point where the agent reaches a score equal or higher than 13.0: 
 
