@@ -2,7 +2,7 @@
 
 ## Learning algorithm
 
-The employed learning algorithm is the standard Deep Q-Learning algorithm which was introduced in the article [Human-level control through deep reinforcement learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). 
+The employed learning algorithm is the standard Deep Q-Learning algorithm which was introduced in the article [Human-level control through deep reinforcement learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf) to solve [Markov Decision Processes](https://en.wikipedia.org/wiki/Markov_decision_process).
 
 Due to the fact that we are using state vectors as an input and not image data we use a simple deep neural network instead of a convolutional neural network to determine the action-value function. The former consists of the following 5 layers coded into the model.py file:
 
@@ -31,11 +31,14 @@ Furthermore we give the parameters used in the dqn_agent.py file:
 
 ## Results
 
-With the above specifications we report the results.
+With the above specifications we create Training run 1 and report the results.
 
 First we give a plot of the scores over the episodes:
 
-![results](images/plot.png)
+![results](images/plot1.png)
+
+Therein, we applied a simple and exponential moving average function at window sizes of 5  (green plot and purple plot, respectively) overlaid with the original data (blue). The red line indicates the threshold 13.0. More information on how to construct these moving averages in python can be found under the following links:
+[Moving average in python](https://www.quora.com/How-do-I-perform-moving-average-in-Python) and [Exponential Moving average in python](https://www.youtube.com/watch?v=3y9GESSZmS0). Notice that the exponential moving average gives more emphasis to recent data than the simple version of it.
 
 Then we list the average score every 100 episodes up to the point where the agent reaches a score equal or higher than 13.0: 
 
@@ -67,25 +70,35 @@ Episode 2374	Average Score: 13.06
 Environment solved in 2274 episodes!	Average Score: 13.06
 ```
 
+In the Training run 2, we used the epsilion decay rate 0.95 and followed an over greedier policy. We also set the theta parameter for the soft update to a slightly bigger value in the dqn_agent.py file.
+
+The respective results are plotted and printed below:
+
+![results](images/plot2.png)
+
+```
+Episode 100	Average Score: 6.233	steps: 299	epsilon: 0.01408804957535735
+Episode 200	Average Score: 12.677	steps: 299	epsilon: 0.01
+Episode: 213	Average Score: 13.03	steps: 299	epsilon: 0.01
+With the given parameters the environment is solved in 213 episodes. 	
+The precise average score is 13.03 there.
+```
+
 ## Possible extensions of the setting and future work
 
 1. The hyperparameters should be optimized: For example, we could change the epsilon decay rate, the learning rate, the batch size and improve the network structure (more/less layers and units; overfitting could be tackled using dropout).
 
 
-Further improvements of the Deep Q-Learning algorithm have been introduced in distinct papers
-
+Further improvements of the Deep Q-Learning algorithm have been introduced in different articles:
 
 2. [Prioritized Experience Replay](https://arxiv.org/abs/1511.05952): In this work the authors extend the idea of experience replay. They introduce a method which prioritizes experiences by replaying important transitions more often which accelerates the learning rate. 
 
-
 3. [Double Q-learning](https://papers.nips.cc/paper/3964-double-q-learning): This method deals with the problem of overestimation, resulting from a positive bias that is introduced because Q-learning uses the maximum action value as an approximation for the maximum expected action value. In this work the authors introduce a double estimator method and show that this method performs well in cases were Q-learning tends to overestimation.
-
-
 
 4. [Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581): In this paper, the authors present a neural network architecture with two branches leading to two estimators: one for the state value function _V(s)_ and one for the state-dependent action advantage function _A(s,a)_. This quantifies the improvement of taking one action compared to the rest. Calculating the value function independently allows the agent to learn the value of the state without the effect of choosing one action over the others. This becomes advantageous for environments were the effect of a single actions on states is not too extensive.
 
 5. [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298): In this paper the authors discuss a combination of multiple possible improvements, such as Learning from multi-step bootstrap targets, Distributional DQN and Noisy DQN. It is shown that in many cases the combination of these methods leads to remarkable improvement in the performance. 
 
-Image based Q-learning
+Image based Q-learning (original DQN article):
 
 6. It is also possible to learn from pixels were the state of the system would be given by an 84 x 84 RGB image. This approach would require a convolutional deep Q-Network and an adequate  training should be performed on GPUs.
