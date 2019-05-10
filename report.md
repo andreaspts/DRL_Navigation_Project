@@ -14,10 +14,11 @@ The DQL algorithm has two major processes which are closely intertwined. In the 
 - we prepare the next state s'
 - we store the experience tuple <s,a,r,s'> in the replay memory 
 - we set s' to s
-In the second step, we randomly select a small batch of tuples from this memory and learn from that batch via a gradient descent update step. (For this we actually need a local network with weights w and a target network and with weights w-. The target network is a separate network the weights of which (w-) are not changed during the learning step.) In particular,
-- we set a target (using the target action-value weights w-)
+
+In the second process, we randomly select a small batch of tuples from this memory and learn from that batch via a gradient descent update step. (For this we actually need a local network with weights **w** and a target network with weights **w-**. The target network is a separate network the weights of which (**w-**) are not changed during the learning step.) In particular,
+- we set a target (using the target action-value weights **w-**)
 - with this we perform the gradient descent in the local network 
-- at a fixed number of steps we reset the weights and obtain new w-.
+- at a fixed number of steps we reset the weights and obtain new **w-**'s.
 
 More specifically, in the replay buffer we store experience tuples <s, a, r, s'> up to a particular buffer size. The tuples are added gradually step by step, episode by episode to the buffer. For the gradient descent update we use MSELoss loss function (aka L2 loss function) and an Adam optimizer. The latter is also fed with the learning rate determining the speed of the gradient descent.  A "soft update" of the model parameters connects the local and target model and is responsible for resetting of weights of the target network.
 
