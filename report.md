@@ -8,7 +8,7 @@ The employed learning algorithm is the standard Deep Q-Learning algorithm which 
 
 At the heart of the learning agent is a deep neural network which acts as a function approximator, i.e. it approximates the action-value function. Fed with a state, it returns the maximum q-value which has to be taken and is fed back into the algorithm as a reinforcement signal.
 
-The DQL algorithm has two major processes which are closely intertwined. In the first, we sample the environment by performing actions and store the observed experience tuples in a replay memory. In particular, within each episode and for every subordinate step, we
+The DQL algorithm has two major processes which are closely intertwined. In the first, we sample the environment by performing actions and store the observed experience tuples in a replay memory. In particular, within each episode and for every subordinate step,
 - we choose an action a from a state s using an epsilon-greedy policy (and the latter is obtained via the Q-table)
 - we take an action a, observe the reward r
 - we prepare the next state s'
