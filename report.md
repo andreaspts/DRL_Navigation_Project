@@ -57,7 +57,7 @@ The precise average score is 13.02 there.
 
 In Training run 2, we used the epsilion decay rate 0.95 and followed an over greedier policy. We also set the theta parameter for the soft update to a slightly bigger value in the dqn_agent.py file.
 
-The respective results are plotted and printed below:
+The respective results are plotted and printed below. The environment is solved much faster following the greedier policy and following a harder update.
 
 <p align="center">
   <img width="460" height="300" src="plot2.png">
