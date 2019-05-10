@@ -55,7 +55,7 @@ With the given parameters the environment is solved in 561 episodes.
 The precise average score is 13.02 there.
 ```
 
-In the Training run 2, we used the epsilion decay rate 0.95 and followed an over greedier policy. We also set the theta parameter for the soft update to a slightly bigger value in the dqn_agent.py file.
+In Training run 2, we used the epsilion decay rate 0.95 and followed an over greedier policy. We also set the theta parameter for the soft update to a slightly bigger value in the dqn_agent.py file.
 
 The respective results are plotted and printed below:
 
