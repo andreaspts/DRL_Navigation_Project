@@ -90,7 +90,7 @@ The precise average score is 13.03 there.
 
 ## Possible extensions of the setting and future work
 
-1. The hyperparameters should be optimized: For example, we could change the epsilon decay rate, the learning rate, the batch size and improve the network structure (more/less layers and units; overfitting could be tackled using dropout).
+1. The hyperparameters should be optimized: For example, we could change the epsilon decay rate, the learning rate, the batch size and improve the network structure (more/less layers and units; overfitting could be tackled using dropout). A step towards this direction was done by reporting the results of Training run 2.
 
 
 Further improvements of the Deep Q-Learning algorithm have been introduced in different articles:
