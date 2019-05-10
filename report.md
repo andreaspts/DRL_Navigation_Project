@@ -35,7 +35,9 @@ With the above specifications we create Training run 1 and report the results.
 
 First we give a plot of the scores over the episodes:
 
-![results](images/plot1.png)
+<p align="center">
+  <img width="460" height="300" src="plot1.png">
+</p>
 
 Therein, we applied a simple and exponential moving average function at window sizes of 5  (green plot and purple plot, respectively) overlaid with the original data (blue). The red line indicates the threshold 13.0. More information on how to construct these moving averages in python can be found under the following links:
 [Moving average in python](https://www.quora.com/How-do-I-perform-moving-average-in-Python) and [Exponential Moving average in python](https://www.youtube.com/watch?v=3y9GESSZmS0). Notice that the exponential moving average gives more emphasis to recent data than the simple version of it.
@@ -74,7 +76,9 @@ In the Training run 2, we used the epsilion decay rate 0.95 and followed an over
 
 The respective results are plotted and printed below:
 
-![results](images/plot2.png)
+<p align="center">
+  <img width="460" height="300" src="plot2.png">
+</p>
 
 ```
 Episode 100	Average Score: 6.233	steps: 299	epsilon: 0.01408804957535735
