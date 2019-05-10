@@ -1,9 +1,27 @@
 # Project report
 
-## Learning algorithm
+## Aspects of the learning algorithm
+
+### Description of the standard Deep Q-Learning algorithm
 
 The employed learning algorithm is the standard Deep Q-Learning algorithm which was introduced in the article [Human-level control through deep reinforcement learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf) to solve [Markov Decision Processes](https://en.wikipedia.org/wiki/Markov_decision_process).
 
+At the heart of the learning agent is a deep neural network which acts as a function approximator, i.e. it approximates the action-value function. Fed with a state, it returns the maximum q-value which has to be taken and is fed back into the algorithm as a reinforcement signal.
+
+The DQL algorithm has two major processes which are closely intertwined. In the first, we sample the environment by performing actions and store the observed experience tuples in a replay memory. In particular, within each episode and for every subordinate step, we
+- we choose an action a from a state s using an epsilon-greedy policy (and the latter is obtained via the Q-table)
+- we take an action a, observe the reward r
+- we prepare the next state s'
+- we store the experience tuple <s,a,r,s'> in the replay memory 
+- we set s' to s
+In the second step, we randomly select a small batch of tuples from this memory and learn from that batch via a gradient descent update step. (For this we actually need a local network with weights w and a target network and with weights w-. The target network is a separate network the weights of which (w-) are not changed during the learning step.) In particular,
+- we set a target (using the target action-value weights w-)
+- with this we perform the gradient descent in the local network 
+- at a fixed number of steps we reset the weights and obtain new w-.
+
+More specifically, in the replay buffer we store experience tuples <s, a, r, s'> up to a particular buffer size. The tuples are added gradually step by step, episode by episode to the buffer. For the gradient descent update we use MSELoss loss function (aka L2 loss function) and an Adam optimizer. The latter is also fed with the learning rate determining the speed of the gradient descent.  A "soft update" of the model parameters connects the local and target model and is responsible for resetting of weights of the target network.
+
+### Network architecture
 Due to the fact that we are using state vectors as an input and not image data we use a simple deep neural network instead of a convolutional neural network to determine the action-value function. The former consists of the following 5 layers coded into the model.py file:
 
 - Fully connected layer - input: 37 (state size) output: 64
@@ -12,6 +30,7 @@ Due to the fact that we are using state vectors as an input and not image data w
 - Fully connected layer - input: 16 output: 8
 - Fully connected layer - input: 8 output: 4 (action size)
 
+### Specification of parameters used in the Deep Q-Learning algorithm
 We speficy the parameters used in the Deep Q-Learning algorithm (as in the dqn-function of the Navigation_solution.ipynb notebook):
 
 - We set the number of episodes n_episodes to 3000. The number of episodes needed to solve the environment and reach a score of 13.0 is expected to be smaller.
@@ -20,12 +39,12 @@ We speficy the parameters used in the Deep Q-Learning algorithm (as in the dqn-f
 - We end with an epsilion eps_end of 0.01.
 - We set the epsilion decay rate eps_decay to 0.995.
 
-Furthermore we give the parameters used in the dqn_agent.py file:
+Furthermore, we give the parameters used in the dqn_agent.py file:
 
 - The size of the replay buffer BUFFER_SIZE is set to 10^6.
 - The mini batch size BATCH_SIZE is set to 64.
 - The discount factor GAMMA for future rewards is set to 0.99.
-- We set the value for soft update of target parameters TAU to 10^-3.
+- We set the value for the soft update of the target parameters TAU to 10^-3.
 - The learning rate for the gradient descent LR is set to 5 * 10^-4.
 - The update rate UPDATE_EVERY is set to 4 meaning that every 4 steps a gradient descent update at minibatch size is done.
 
