@@ -6,9 +6,9 @@
 
 The employed learning algorithm is the standard Deep Q-Learning algorithm which was introduced in the article [Human-level control through deep reinforcement learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf) to solve [Markov Decision Processes](https://en.wikipedia.org/wiki/Markov_decision_process).
 
-At the heart of the learning agent is a deep neural network which acts as a function approximator, i.e. it approximates the action-value function. Fed with a state, it returns the maximum q-value which has to be taken and is fed back into the algorithm as a reinforcement signal.
+At the heart of the learning agent is a deep neural network which acts as a function approximator, i.e. it approximates the action-value function. Fed with a state, it returns the maximum q-value which is be taken and fed back into the algorithm as a reinforcement signal.
 
-The DQL algorithm has two major processes which are closely intertwined. In the first, we sample the environment by performing actions and store the observed experience tuples in a replay memory. In particular, within each episode and for every subordinate step,
+The DQL algorithm has two major processes which are closely intertwined. In the first, we sample the environment by performing actions and store the observed experience tuples in a replay memory. In particular, within each episode and for every subordinate timestep,
 - we choose an action a from a state s using an epsilon-greedy policy (and the latter is obtained via the Q-table)
 - we take an action a, observe the reward r
 - we prepare the next state s'
